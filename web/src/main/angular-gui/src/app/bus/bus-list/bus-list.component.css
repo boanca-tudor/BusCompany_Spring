@@ -1,0 +1,83 @@
+.crud {
+  background: #eac612;
+  display: flex;
+  padding: 30px;
+  border-radius: 25px;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.main-section {
+  float: left;
+  display: inline;
+}
+
+button {
+  margin: 2px;
+  padding: 5px;
+  background: #eee;
+  border-radius: 8px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  margin: 5px;
+  width: auto;
+}
+
+.browsing-table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+}
+
+.nameInput {
+  height: fit-content;
+  align-self: center;
+  margin-left: 12px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.title {
+  align-self: center;
+  font-size: 20px;
+  text-underline: aliceblue;
+  color: #5bb41b;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.button-spacer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+}

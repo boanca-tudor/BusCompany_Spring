@@ -1,0 +1,5 @@
+rootProject.name = 'lab10x-boanca-tudor'
+include 'common'
+include 'web'
+include 'client'
+

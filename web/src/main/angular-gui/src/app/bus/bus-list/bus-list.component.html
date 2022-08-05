@@ -1,0 +1,88 @@
+<h2>Buses</h2>
+<div class="crud">
+  <section class="main-section">
+    <table class="browsing-table">
+      <thead>
+        <th>MODEL</th>
+        <th>DRIVER NAME</th>
+        <th></th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bus of buses">
+        <td>{{bus.modelName}}</td>
+        <td>{{bus.driver.name}}</td>
+        <td>
+          <button class='btnUpdate' type='button' (click)="loadBusData(bus)">Update</button>
+          <button class='btnDelete' type='button' (click)="deleteBus(bus.id)">Delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="button-spacer">
+      <button class="page-button" type="button" (click)="decreasePage()">&lt; Prev</button>
+      <button class="page-button" type="button" (click)="increasePage()">Next &gt;</button>
+    </div>
+  </section>
+
+  <section class="main-container">
+    <p class="title">
+      Add New Bus
+    </p>
+    <div class="container">
+      <p>Model:</p>
+      <input type="text" #modelInput/>
+    </div>
+    <div class="container">
+      <p>Driver:</p>
+      <select name="drivers" #driverSelect (click)="setDriver()">
+        <option>Choose Driver</option>
+        <option *ngFor="let driver of availableDrivers">
+          {{driver.name}}
+        </option>
+      </select>
+    </div>
+
+    <button [disabled]="!canAdd" (click)="addBus(modelInput.value)">
+      Add New Bus
+    </button>
+  </section>
+
+  <section
+    class="main-container"
+    [hidden]="show">
+    <p class="title">
+      Update Bus
+    </p>
+
+    <div class="container" [hidden]="true">
+      <p>ID:</p>
+      <input type="text" #idUpdateInput readonly/>
+    </div>
+
+    <div class="container">
+      <p>Model:</p>
+      <input type="text" #modelUpdateInput placeholder="model"/>
+    </div>
+
+    <button (click)="updateBus(idUpdateInput.value, modelUpdateInput.value)">
+      Update Bus
+    </button>
+  </section>
+
+  <section
+    class="main-container">
+    <p class="title">
+      Filter By Model
+    </p>
+    <div class="container">
+      <p>Model:</p>
+      <input type="text" #filterModelName placeholder="model">
+    </div>
+    <div class="container">
+      <button (click)="filterByModel(filterModelName.value)">Filter</button>
+    </div>
+    <div class="container">
+      <button (click)="refresh()">Refresh</button>
+    </div>
+  </section>
+</div>

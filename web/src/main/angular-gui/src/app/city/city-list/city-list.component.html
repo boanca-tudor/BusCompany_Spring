@@ -1,0 +1,72 @@
+<h2>Cities</h2>
+<div class="crud">
+  <section class="main-section">
+    <table class="browsing-table">
+      <thead>
+        <th>NAME</th>
+        <th>POPULATION</th>
+        <th></th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let city of cities">
+        <td>{{city.name}}</td>
+        <td>{{city.population}}</td>
+        <td>
+          <button class='btnUpdate' type='button' (click)="loadCityData(city)">Update</button>
+          <button class='btnDelete' type='button' (click)="deleteCity(city.id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="button-spacer">
+      <button class="page-button" type="button" (click)="decreasePage()">&lt; Prev</button>
+      <button class="page-button" type="button" (click)="increasePage()">Next &gt;</button>
+    </div>
+  </section>
+
+  <section class="main-container">
+    <p class="title">
+      Add new City
+    </p>
+    <div class="container">
+      <p>Name:</p>
+      <input type="text" #nameInput placeholder="name">
+    </div>
+
+    <div class="container">
+      <p>Population:</p>
+      <input type="number" #populationInput placeholder="0">
+    </div>
+
+    <button (click)="addCity(nameInput.value, populationInput.value)">
+      Add New City
+    </button>
+  </section>
+
+  <section
+    class="main-container"
+    [hidden]="show">
+    <p class="title">
+      Update City
+    </p>
+    <div class="container">
+      <p>ID:</p>
+      <input type="text" #idUpdateInput readonly/>
+    </div>
+
+    <div class="container">
+      <p>Name:</p>
+      <input type="text" #nameUpdateInput placeholder="model">
+    </div>
+
+    <div class="container">
+      <p>Population:</p>
+      <input type="number" #populationUpdateInput placeholder="0">
+    </div>
+
+    <button (click)="updateCity(idUpdateInput.value, nameUpdateInput.value, populationUpdateInput.value)">
+      Update Bus
+    </button>
+  </section>
+</div>

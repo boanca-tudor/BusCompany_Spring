@@ -1,0 +1,165 @@
+<h2>Cities</h2>
+<div class="wrapper">
+  <section class="main-section">
+    <table class="browsing-table">
+      <thead>
+      <th>Name</th>
+      <th>City Name</th>
+      <th></th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let station of stations">
+        <td>{{station.name}}</td>
+        <td>{{station.city.name}}</td>
+        <td>
+          <button class='btnUpdate' type='button' (click)="loadStationData(station)">Update</button>
+          <button class='btnDelete' type='button' (click)="deleteStation(station.id)">Delete</button>
+          <button class='btnDelete' type='button' (click)="prepareAddStop(station)">Add Stop</button>
+          <button class='btnDelete' type='button' (click)="showStopsForStation(station)">View Stops</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="button-spacer">
+      <button class="page-button" type="button" (click)="decreasePage()">&lt; Prev</button>
+      <button class="page-button" type="button" (click)="increasePage()">Next &gt;</button>
+    </div>
+  </section>
+
+  <section class="main-container">
+    <p class="title">
+      Add new Station
+    </p>
+    <div class="container">
+      <p>Name:</p>
+      <input type="text" #nameInput placeholder="name">
+    </div>
+
+    <div class="container">
+      <p>City:</p>
+      <select name="cities" #citySelect (click)="setCity()">
+        <option>Choose City</option>
+        <option *ngFor="let city of cities">
+          {{city.name}}
+        </option>
+      </select>
+    </div>
+
+    <button (click)="addStation(nameInput.value)">
+      Add New Station
+    </button>
+  </section>
+
+  <section
+    class="main-container"
+    [hidden]="hide">
+    <p class="title">
+      Update Station
+    </p>
+    <div class="container" [hidden]="true">
+      <p>ID:</p>
+      <input type="text" #idUpdateInput readonly/>
+    </div>
+
+    <div class="container">
+      <p>Name:</p>
+      <input type="text" #nameUpdateInput placeholder="name">
+    </div>
+
+    <div class="container" [hidden]="true">
+      <p>City ID:</p>
+      <input type="number" #cityIdUpdateInput readonly>
+    </div>
+
+    <button (click)="updateStation(idUpdateInput.value, nameUpdateInput.value)">
+      Update Station
+    </button>
+  </section>
+
+  <section
+    class="main-container">
+    <p class="title">
+      Filter By City Name
+    </p>
+
+    <div class="container">
+      <p>City Name:</p>
+      <input type="text" #cityNameInput placeholder="name">
+    </div>
+
+    <div class="container">
+      <button (click)="filterByCityName(cityNameInput.value)">Filter</button>
+    </div>
+    <div class="container">
+      <button (click)="resetFiltered()">Reset</button>
+    </div>
+  </section>
+
+  <section
+    class="main-container"
+    [hidden]="hideFiltered">
+    <table class="browsing-table centered">
+      <thead>
+      <th>ID</th>
+      <th>NAME</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let station of filteredStations">
+        <td>{{station.id}}</td>
+        <td>{{station.name}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+<br>
+<div class="wrapper" [hidden]="hideStopView">
+  <section class="main-section">
+    <table class="browsing-table">
+      <thead>
+        <th>Station Name</th>
+        <th>Bus Model</th>
+        <th>Stop Time</th>
+        <th></th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let stop of stops">
+        <td>{{stop.busStation.name}}</td>
+        <td>{{stop.bus.modelName}}</td>
+        <td>{{stop.stopTime}}</td>
+        <td>
+          <button class='btnDelete' type='button' (click)="deleteStop(stop)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+<br>
+<div class="wrapper" [hidden]="hideStopAdd">
+  <section class="main-container">
+    <p class="title">
+      Add new Stop
+    </p>
+
+    <div class="container">
+      <p>Bus:</p>
+      <select name="buses" #busSelect (click)="setBus()">
+        <option>Choose Bus</option>
+        <option *ngFor="let bus of buses">
+          {{bus.modelName}}
+        </option>
+      </select>
+    </div>
+
+    <div class="container">
+      <p>Bus:</p>
+      <input type="text" #stopTimeInput placeholder="stop time">
+    </div>
+
+    <button (click)="addStop(stopTimeInput.value)">
+      Add New Station
+    </button>
+  </section>
+</div>

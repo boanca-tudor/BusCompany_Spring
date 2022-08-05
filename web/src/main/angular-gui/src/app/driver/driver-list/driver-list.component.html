@@ -1,0 +1,72 @@
+<h2>Cities</h2>
+<div class="crud">
+  <section class="main-section">
+    <table class="browsing-table">
+      <thead>
+      <th>NAME</th>
+      <th>CNP</th>
+      <th></th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let driver of drivers">
+        <td>{{driver.name}}</td>
+        <td>{{driver.cnp}}</td>
+        <td>
+          <button class='btnUpdate' type='button' (click)="loadDriverData(driver)">Update</button>
+          <button class='btnDelete' type='button' (click)="deleteDriver(driver.id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="button-spacer">
+      <button class="page-button" type="button" (click)="decreasePage()">&lt; Prev</button>
+      <button class="page-button" type="button" (click)="increasePage()">Next &gt;</button>
+    </div>
+  </section>
+
+  <section class="main-container">
+    <p class="title">
+      Add new Driver
+    </p>
+    <div class="container">
+      <p>Name:</p>
+      <input type="text" #nameInput placeholder="name">
+    </div>
+
+    <div class="container">
+      <p>CNP:</p>
+      <input type="text" #cnpInput placeholder="cnp">
+    </div>
+
+    <button (click)="addDriver(nameInput.value, cnpInput.value)">
+      Add New Driver
+    </button>
+  </section>
+
+  <section
+    class="main-container"
+    [hidden]="show">
+    <p class="title">
+      Update Driver
+    </p>
+    <div class="container" [hidden]="true">
+      <p>ID:</p>
+      <input type="text" #idUpdateInput readonly/>
+    </div>
+
+    <div class="container">
+      <p>Name:</p>
+      <input type="text" #nameUpdateInput placeholder="name">
+    </div>
+
+    <div class="container">
+      <p>CNP:</p>
+      <input type="text" #cnpUpdateInput placeholder="cnp">
+    </div>
+
+    <button (click)="updateDriver(idUpdateInput.value, nameUpdateInput.value, cnpUpdateInput.value)">
+      Update Driver
+    </button>
+  </section>
+</div>

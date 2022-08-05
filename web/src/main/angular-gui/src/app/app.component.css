@@ -1,0 +1,27 @@
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  background-color: #e7b353;
+  color: white;
+  font-weight: 600;
+}
+
+button {
+  background: azure;
+  border-radius: 15px;
+  border: none;
+  margin: 12px;
+}
+
+button:hover {
+  background: aliceblue;
+  border-radius: 15px;
+  border: none;
+  margin: 12px;
+  cursor: pointer;
+}
